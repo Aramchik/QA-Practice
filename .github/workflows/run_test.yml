@@ -92,6 +92,7 @@ jobs:
           sudo mv /tmp/allure-2.32.2 /opt/allure
           
       - name: Setup Allure PATH
+        run:
           echo "/opt/allure/bin" >> $GITHUB_PATH
           allure --version
 
