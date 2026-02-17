@@ -95,6 +95,7 @@ jobs:
         run:
           echo "/opt/allure/bin" >> $GITHUB_PATH
           allure --version
+          which allure
 
       - name: Generate Allure report
         if: always()
