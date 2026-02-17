@@ -37,7 +37,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'          # 3.9 устарела, лучше 3.11+
+          python-version: '3.11'          
           cache: 'pip'
 
       - name: Install dependencies
@@ -89,7 +89,7 @@ jobs:
       - name: Install Allure
         run: |
           curl -sL https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz | tar -xz -C /tmp
-          mv /tmp/allure-2.32.2 /opt/allure
+          sudo mv /tmp/allure-2.32.2 /opt/allure
           echo "/opt/allure/bin" >> $GITHUB_PATH
           allure --version
 
