@@ -97,7 +97,11 @@ jobs:
           allure --version
 
       - name: Generate Allure report
-        run: allure generate allure-results -o public --clean || true
+        run: |
+          ls -la allure-results || echo "Папка allure-results не существует или пуста"
+          du -sh allure-results || echo "Размер allure-results"
+          allure generate allure-results -o public --clean || echo "allure generate упал, но продолжаем"
+          ls -la public || echo "Папка public НЕ создана!"
 
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
