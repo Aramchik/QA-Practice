@@ -52,7 +52,7 @@ jobs:
           else
             
             case "${{ inputs.category }}" in
-              "drop down")   pytest tests/test_dropdown.py --alluredir=allure-results -v ;;
+              "drop down")   pytest tests/test_suie.py --alluredir=allure-results -v ;;
               inputs)        pytest tests/test_input.py --alluredir=allure-results -v ;;
               buttons)       pytest tests/test_buttons.py --alluredir=allure-results -v ;;
               checkbox)      pytest tests/test_checkbox.py --alluredir=allure-results -v ;;
