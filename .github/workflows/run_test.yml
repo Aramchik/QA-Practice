@@ -97,11 +97,20 @@ jobs:
           allure --version
 
       - name: Generate Allure report
+        if: always()
         run: |
-          ls -la allure-results || echo "Папка allure-results не существует или пуста"
-          du -sh allure-results || echo "Размер allure-results"
-          allure generate allure-results -o public --clean || echo "allure generate упал, но продолжаем"
-          ls -la public || echo "Папка public НЕ создана!"
+          echo "=== Содержимое allure-results ==="
+          ls -la allure-results || echo "Папка allure-results НЕ существует"
+          if [ -d "allure-results" ]; then
+            echo "Количество файлов:"
+            find allure-results -type f | wc -l
+            echo "Примеры файлов:"
+            ls -la allure-results | head -n 10 || true
+          fi
+          echo "=== Пытаемся сгенерировать отчёт ==="
+          allure generate allure-results -o public --clean || echo "allure generate завершился с ошибкой (код $?)"
+          echo "=== Содержимое public после генерации ==="
+          ls -la public || echo "Папка public НЕ создана"
 
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
