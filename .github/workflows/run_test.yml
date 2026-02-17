@@ -86,16 +86,18 @@ jobs:
           name: allure-results
           path: allure-results
 
-      - name: Install Allure
+      - name: Download and unpack Allure
         run: |
           curl -sL https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz | tar -xz -C /tmp
           sudo mv /tmp/allure-2.32.2 /opt/allure
+          ls -la /opt/allure/bin
           
-      - name: Setup Allure PATH
+      - name: Setup Allure PATH and verify
         run:
           echo "/opt/allure/bin" >> $GITHUB_PATH
-          allure --version
-          which allure
+          sleep 1
+          allure --version || echo "Allure всё ещё не найден после добавления пути"
+          which allure || echo "which allure не видит команду"
 
       - name: Generate Allure report
         if: always()
@@ -104,7 +106,7 @@ jobs:
           ls -la allure-results || echo "Папка allure-results НЕ существует"
           if [ -d "allure-results" ]; then
             echo "Количество файлов:"
-            find allure-results -type f | wc -l
+          find allure-results -type f | wc -l
             echo "Примеры файлов:"
             ls -la allure-results | head -n 10 || true
           fi
