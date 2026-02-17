@@ -90,30 +90,35 @@ jobs:
         run: |
           curl -sL https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz | tar -xz -C /tmp
           sudo mv /tmp/allure-2.32.2 /opt/allure
-          ls -la /opt/allure/bin
-          
+          ls -la /opt/allure/bin || echo "Папка /opt/allure/bin НЕ найдена — ошибка распаковки"
+
       - name: Setup Allure PATH and verify
-        run:
+        run: |
           echo "/opt/allure/bin" >> $GITHUB_PATH
           sleep 1
-          allure --version || echo "Allure всё ещё не найден после добавления пути"
-          which allure || echo "which allure не видит команду"
+          allure --version || echo "!!! Allure НЕ найден после добавления пути !!!"
+          which allure || echo "!!! which allure не видит команду !!!"
+          /opt/allure/bin/allure --version || echo "!!! Полный путь тоже не работает !!!"
 
       - name: Generate Allure report
         if: always()
         run: |
+          echo "=== Проверка Allure ==="
+          which allure || echo "Allure НЕ найден!"
+          allure --version || echo "allure --version не работает"
+
           echo "=== Содержимое allure-results ==="
-          ls -la allure-results || echo "Папка allure-results НЕ существует"
-          if [ -d "allure-results" ]; then
-            echo "Количество файлов:"
-          find allure-results -type f | wc -l
-            echo "Примеры файлов:"
-            ls -la allure-results | head -n 10 || true
+          ls -la allure-results || echo "allure-results отсутствует"
+
+          if [ -d "allure-results" ] && [ "$(ls -A allure-results)" ]; then
+            allure generate allure-results -o public --clean
+          else
+            echo "Нет результатов тестов"
+            mkdir -p public
+            echo "<h1>Нет данных</h1>" > public/index.html
           fi
-          echo "=== Пытаемся сгенерировать отчёт ==="
-          allure generate allure-results -o public --clean || echo "allure generate завершился с ошибкой (код $?)"
-          echo "=== Содержимое public после генерации ==="
-          ls -la public || echo "Папка public НЕ создана"
+
+          ls -la public || echo "public не создана"
 
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
