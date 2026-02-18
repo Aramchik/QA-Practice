@@ -91,7 +91,7 @@ class TextArea(BasePage):
         # Даём 1–2 секунды на завершение скролла и анимаций
         time.sleep(1.5)
         # Ждём кликабельности
-        WebDriverWait(self.browser, 15).until(Eс.element_to_be_clickable(submit_btn))
+        WebDriverWait(self.browser, 15).until(Ec.element_to_be_clickable(submit_btn))
 
 
 
