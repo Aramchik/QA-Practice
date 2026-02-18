@@ -51,7 +51,10 @@ class TextArea(BasePage):
         return WebDriverWait(self.browser,10).until(Ec.element_to_be_clickable(text_area_input))
 
     def get_result_text(self):
-        return WebDriverWait(self.browser, 10).until(Ec.element_to_be_clickable(result_text))
+        result_elem = WebDriverWait(self.browser, 20).until(Ec.presence_of_element_located(result_text))  # сначала присутствует в DOM
+        self.browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", result_elem)
+        time.sleep(1)  # даём JS время отрендерить
+        return WebDriverWait(self.browser, 20).until(Ec.visibility_of_element_located(result_text))
 
 
 
