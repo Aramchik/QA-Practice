@@ -85,8 +85,8 @@ class TextArea(BasePage):
 
 
     def click_submit(self):
-        self.get_submit_button().click()
-        print('Click submit button')
+        submit_btn = WebDriverWait(self.browser, 15).until(EC.element_to_be_clickable((By.ID, "submit-id-submit"))  
+        submit_btn.click()
 
 
 
