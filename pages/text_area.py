@@ -91,14 +91,8 @@ class TextArea(BasePage):
 
 
     def click_submit(self):
-        submit_btn = self.get_submit_button() 
-        # Прокручиваем кнопку в центр видимой области
-        self.browser.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", submit_btn)
-        # Даём 1–2 секунды на завершение скролла и анимаций
-        time.sleep(1.5)
-        # Ждём кликабельности
-        WebDriverWait(self.browser, 15).until(Ec.element_to_be_clickable(submit_btn))
-
+        self.get_submit_button().click()
+        print('Click submit button')
 
 
 
