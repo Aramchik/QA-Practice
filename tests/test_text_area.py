@@ -13,8 +13,11 @@ def test_text_area(browser):
         ta.open_text_area_page()
     with allure.step('Typing text'):
         ta.typing_text()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
     with allure.step('Click submit and assert'):
         ta.click_submit()
+        ta.do_screenshot()
         ta.assert_text_area_input()
     with allure.step('Do screenshot'):
         ta.do_screenshot()
