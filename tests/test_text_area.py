@@ -16,6 +16,8 @@ def test_text_area(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.assert_text_area_input()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
 
 
     # Negative tests
@@ -49,6 +51,8 @@ def test_only_first(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.assert_first_text_area()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
 
 
 # test first and second chapter
@@ -65,6 +69,8 @@ def test_first_and_second(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.assert_first_and_second_text_area()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
 
 
 # test first second and third chapter
@@ -83,6 +89,8 @@ def test_first_second_third(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.assert_first_second_third_text_area()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
 
 
 
@@ -101,6 +109,8 @@ def test_first_third(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.assert_first_third_text_area()
+    with allure.step('Do screenshot'):
+        ta.do_screenshot()
 
 
 
