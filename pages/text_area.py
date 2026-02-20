@@ -97,7 +97,7 @@ class TextArea(BasePage):
         except Exception as e:
             print(f"Обычный клик не удался: {e}")
             # 5. Клик через JS — обходит большинство проблем
-            self.browser.execute_script("arguments[0].click();", submit_btn)
+            self.browser.execute_script("arguments[0].click();", submit_button)
             print("Клик по Submit выполнен через JS")
             time.sleep(2)
 
