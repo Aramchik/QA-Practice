@@ -22,7 +22,7 @@ def test_text_area(browser):
 # Click submit with null input
 @allure.feature('Text area')
 @allure.step('Negative test text area')
-def test_text_area(browser):
+def test_text_area_negative(browser):
     with allure.step('Open browser, Text area page'):
         ta = TextArea(browser)
         ta.open_text_area_page()
