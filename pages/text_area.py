@@ -92,7 +92,7 @@ class TextArea(BasePage):
 
     def click_submit(self):
         try:
-            submit_btn.click()
+            self.get_submit_button.click()
             print("Обычный клик по Submit прошёл")
         except Exception as e:
             print(f"Обычный клик не удался: {e}")
