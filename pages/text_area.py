@@ -91,14 +91,27 @@ class TextArea(BasePage):
 
 
     def click_submit(self):
+        # Находим элемент (WebElement)
+        submit_btn = self.get_submit_button()  # это WebElement, а не локатор
+        # Прокручиваем
+        self.browser.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});",submit_btn)  # ← передаём WebElement
+    
+        time.sleep(1.5)
+    
+        # Ждём кликабельности
+        WebDriverWait(self.browser, 15).until(Ec.element_to_be_clickable(submit_btn))
+        
+        # Пробуем обычный клик
         try:
-            self.get_submit_button.click()
-            print("Обычный клик по Submit прошёл")
+            submit_btn.click()
+            print("Обычный клик прошёл")
         except Exception as e:
-            print(f"Обычный клик не удался: {e}")
-            # 5. Клик через JS — обходит большинство проблем
-            self.browser.execute_script("arguments[0].click();", submit_button)
-            print("Клик по Submit выполнен через JS")
+            print(f"Обычный клик упал: {e}")
+            # Клик через JS — передаём WebElement
+            self.browser.execute_script("arguments[0].click();", submit_btn)
+            print("Клик через JS прошёл")
+        
+            # Даём время на обработку submit
             time.sleep(2)
 
 
