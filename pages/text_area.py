@@ -138,6 +138,17 @@ class TextArea(BasePage):
 
 
         # Asserts
+    def assert_values(self, word, result):
+        value_word = word.strip() if hasattr(word, 'strip') else word  # на всякий случай
+        print(f"[DEBUG ASSERT] Ожидаемый текст: '{result}'")
+        print(f"[DEBUG ASSERT] Полученный текст: '{value_word}'")
+        allure.attach(f"Ожидаемый: {result}\nПолученный: {value_word}", name="Assert debug", attachment_type=allure.attachment_type.TEXT)
+        
+        assert value_word == result, f"Ожидалось '{result}', получено '{value_word}'"
+
+
+
+    
     # Text area asserts
     def assert_text_area_input(self):
         self.assert_values(self.get_result_text(),'Some text')
