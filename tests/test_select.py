@@ -16,6 +16,7 @@ def test_single_select(browser):
     # Test python
     with allure.step('Chose python, click submit and assert'):
         sp.click_chose()
+        sp.do_screenshot()
         sp.click_puthon()
         sp.click_submit()
         sp.assert_python()
