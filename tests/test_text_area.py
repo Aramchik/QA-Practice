@@ -18,7 +18,7 @@ def test_text_area(browser):
     with allure.step('Click submit and assert'):
         ta.click_submit()
         ta.do_screenshot()
-        ta.assert_text_area_input()
+        ta.assert_values()
     with allure.step('Do screenshot'):
         ta.do_screenshot()
 
