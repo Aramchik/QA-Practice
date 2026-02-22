@@ -20,7 +20,7 @@ def test_single_select(browser):
         sp.click_submit()
         sp.assert_python()
 
-    time.sleep(3)
+    time.sleep(1)
     
     # Test Ruby
     with allure.step('Chose ruby, click submit and assert'):
@@ -29,7 +29,7 @@ def test_single_select(browser):
         sp.click_submit()
         sp.assert_ruby()
 
-    time.sleep(3)
+    time.sleep(1)
     
     # Test JS
     with allure.step('Chose JS, click submit and assert'):
@@ -38,7 +38,7 @@ def test_single_select(browser):
         sp.click_submit()
         sp.assert_js()
 
-    time.sleep(3)
+    time.sleep(1)
 
     
     # Test Java
@@ -53,7 +53,7 @@ def test_single_select(browser):
         
 
 
-    time.sleep(3)
+    time.sleep(1)
 
     # Test C#
     with allure.step('Chose C#, click submit and assert'):
@@ -62,7 +62,7 @@ def test_single_select(browser):
         sp.click_submit()
         sp.assert_c_sharp()
 
-    time.sleep(3)
+    time.sleep(1)
 
 # Test multi select
 @allure.feature('Multi selects')
