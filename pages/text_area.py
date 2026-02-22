@@ -50,16 +50,21 @@ class TextArea(BasePage):
     def get_text_area_input(self):
         return WebDriverWait(self.browser,10).until(Ec.element_to_be_clickable(text_area_input))
 
+    
+
     def get_result_text(self):
-        #result_elem = WebDriverWait(self.browser, 30).until(Ec.presence_of_element_located(result_text))  # сначала присутствует в DOM
-        #self.browser.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", result_elem)
-        #time.sleep(2)  # даём JS время отрендерить
-        #WebDriverWait(self.browser, 10).until(
-        #lambda driver: result_elem.is_displayed() and len(result_elem.text.strip()) > 0)
-        #text = result_elem.text.strip()
-        #print(f"Получен текст результата: '{text}'")  # для отладки в CI
-        #return text
-        return WebDriverWait(self.browser,10).until(Ec.visibility_of_element_located(text_area_input))
+        result_elem = WebDriverWait(self.browser, 30).until(Ec.presence_of_element_located(result_text))
+    
+        self.browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", result_elem)
+        time.sleep(3)
+    
+        WebDriverWait(self.browser, 10).until(lambda d: result_elem.is_displayed() and len(result_elem.text.strip()) > 0)
+    
+        text = result_elem.text.strip()
+        print(f"[DEBUG CI] Получен текст результата: '{text}' (длина: {len(text)})")
+        allure.attach(text, name="Текст результата (debug)", attachment_type=allure.attachment_type.TEXT)
+    
+        return text
 
 
 
