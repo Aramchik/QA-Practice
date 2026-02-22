@@ -2,6 +2,7 @@ import selenium
 import pytest
 from pages.select import SelectPage
 import allure
+import time
 
 
     # Select
