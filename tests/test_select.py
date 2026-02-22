@@ -43,9 +43,13 @@ def test_single_select(browser):
     # Test Java
     with allure.step('Chose Java, click submit and assert'):
         sp.click_chose()
+        sp.do_screenshot()
         sp.click_java()
+        sp.do_screenshot()
         sp.click_submit()
+        sp.do_screenshot()
         sp.assert_java()
+        
 
 
     time.sleep(3)
