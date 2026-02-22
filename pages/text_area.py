@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as Ec
 from pages.base import BasePage
 import time
-
+import allure 
 # Lockators
 submit_button = (By.XPATH, "//input[@id='submit-id-submit']")
 
