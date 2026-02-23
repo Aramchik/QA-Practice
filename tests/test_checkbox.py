@@ -59,30 +59,30 @@ def test_click_chekboxs(browser):
         cp.do_screenshot()
     with allure.step('Click 1 checkbox'):
         cp.only_one()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 2 checkbox'):
         cp.only_two()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 3 checkbox'):
         cp.only_three()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 1 and 2 checkboxes'):
         cp.one_two()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 1 and 3 checkboxes'):
         cp.one_three()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 2 and 3 checkboxes'):
         cp.two_three()
-        do_screenshot()
+        cp.do_screenshot()
         time.sleep(2)
     with allure.step('Click 1 2 3 checkboxes'):
         cp.all()
-        do_screenshot()
+        cp.do_screenshot()
         
 
