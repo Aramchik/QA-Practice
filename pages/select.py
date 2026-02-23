@@ -319,7 +319,7 @@ class SelectPage(BasePage):
             try:
                 self.assert_values(self.get_selected_text(), "Python")
                 print('You selected Python')
-            except StaleElementReferenceException:
+            except:
                 time.sleep(1)  # Немного подождать перед повторной попыткой
             
 
@@ -329,7 +329,7 @@ class SelectPage(BasePage):
             try:
                 self.assert_values(self.get_selected_text(), "Ruby")
                 print('You selected Ruby')
-            except StaleElementReferenceException:
+            except:
                 time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
@@ -338,7 +338,7 @@ class SelectPage(BasePage):
             try:
                 self.assert_values(self.get_selected_text(), "JavaScript")
                 print('You selected JavaScript')
-            except StaleElementReferenceException:
+            except:
                 time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
@@ -347,7 +347,7 @@ class SelectPage(BasePage):
             try:
                 self.assert_values(self.get_selected_text(), "Java")
                 print('You selected Java')
-            except StaleElementReferenceException:
+            except:
                 time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
@@ -356,7 +356,7 @@ class SelectPage(BasePage):
             try:
                 self.assert_values(self.get_selected_text(), "C#")
                 print('You selected C#')
-            except StaleElementReferenceException:
+            except:
                 time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
