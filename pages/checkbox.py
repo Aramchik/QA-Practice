@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as Ec
 from pages.base import BasePage
+import time
 
 # Lockators
 # Single checkbox lockators
@@ -109,8 +110,11 @@ class CheckboxPage(BasePage):
 
     def only_one(self):
         self.click_one()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'one')
+        time.sleep(1)
         print('checkbox one is correct')
 
 
@@ -121,8 +125,11 @@ class CheckboxPage(BasePage):
 
     def only_two(self):
         self.click_two()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'two')
+        time.sleep(1)
         print('checkbox two is correct')
 
 
@@ -133,8 +140,11 @@ class CheckboxPage(BasePage):
 
     def only_three(self):
         self.click_three()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'three')
+        time.sleep(1)
         print('checkbox three is correct')
 
 
@@ -144,9 +154,13 @@ class CheckboxPage(BasePage):
 
     def one_two(self):
         self.click_one()
+        time.sleep(1)
         self.click_two()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'one, two')
+        time.sleep(1)
         print('checkbox one and two is correct')
 
 
@@ -155,9 +169,13 @@ class CheckboxPage(BasePage):
 
     def one_three(self):
         self.click_one()
+        time.sleep(1)
         self.click_three()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'one, three')
+        time.sleep(1)
         print('checkbox one and three is correct')
 
 
@@ -167,9 +185,13 @@ class CheckboxPage(BasePage):
 
     def two_three(self):
         self.click_two()
+        time.sleep(1)
         self.click_three()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'two, three')
+        time.sleep(1)
         print('checkbox two and three is correct')
 
 
@@ -179,8 +201,13 @@ class CheckboxPage(BasePage):
 
     def all(self):
         self.click_one()
+        time.sleep(1)
         self.click_two()
+        time.sleep(1)
         self.click_three()
+        time.sleep(1)
         self.click_submit_button()
+        time.sleep(1)
         self.assert_values(self.get_selected_text(), 'one, two, three')
+        time.sleep(1)
         print('checkbox one, two, three is corect')
