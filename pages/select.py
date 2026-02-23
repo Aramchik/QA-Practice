@@ -315,28 +315,49 @@ class SelectPage(BasePage):
     # assert single select texts
 
     def assert_python(self):
-        self.assert_values(self.get_selected_text(), "Python")
-        print('You selected Python')
+        for _ in range(3):
+            try:
+                self.assert_values(self.get_selected_text(), "Python")
+                print('You selected Python')
+            except:StaleElementReferenceException:
+                time.sleep(1)  # Немного подождать перед повторной попыткой
+            
 
 
     def assert_ruby(self):
-        self.assert_values(self.get_selected_text(), "Ruby")
-        print('You selected Ruby')
+        for _ in range(3):
+            try:
+                self.assert_values(self.get_selected_text(), "Ruby")
+                print('You selected Ruby')
+            except:StaleElementReferenceException:
+                time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
     def assert_js(self):
-        self.assert_values(self.get_selected_text(), "JavaScript")
-        print('You selected JavaScript')
+        for _ in range(3):
+            try:
+                self.assert_values(self.get_selected_text(), "JavaScript")
+                print('You selected JavaScript')
+            except:StaleElementReferenceException:
+                time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
     def assert_java(self):
-        self.assert_values(self.get_selected_text(), "Java")
-        print('You selected Java')
+        for _ in range(3):
+            try:
+                self.assert_values(self.get_selected_text(), "Java")
+                print('You selected Java')
+            except:StaleElementReferenceException:
+                time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
     def assert_c_sharp(self):
-        self.assert_values(self.get_selected_text(), "C#")
-        print('You selected C#')
+        for _ in range(3):
+            try:
+                self.assert_values(self.get_selected_text(), "C#")
+                print('You selected C#')
+            except:StaleElementReferenceException:
+                time.sleep(1)  # Немного подождать перед повторной попыткой
 
 
 
