@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as Ec
 from pages.base import BasePage
+import time
 
 
 # Lockators
@@ -208,14 +209,20 @@ class PopUp(BasePage):
     # All buisnes path. Click launch pop up, copy text, click check, send keys, click submit, and  asert text
     def all_buisnes_path(self):
         self.click_launch_pop_up()
+        time.sleep(1)
         iframe = self.browser.find_element(By.TAG_NAME, 'iframe')
         self.browser.switch_to.frame(iframe)
+        time.sleep(1)
         text_for_copy = self.browser.find_element(By.XPATH, '//p[@id="text-to-copy"]').text
         print(text_for_copy)
         self.browser.switch_to.default_content()
+        time.sleep(1)
         self.click_check()
+        time.sleep(1)
         self.send_keys(text_for_copy)
+        time.sleep(1)
         self.click_submit()
+        time.sleep(1)
         self.asert_copy_text()
 
 
