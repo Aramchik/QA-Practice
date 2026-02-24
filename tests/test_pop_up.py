@@ -2,6 +2,7 @@ import allure
 import selenium
 import pytest
 from pages.pop_up import PopUp
+import time
 
 
             # Test Pop-up
@@ -16,10 +17,13 @@ def test_select_me(browser):
         pu.open_modal_page()
     with allure.step('Click launch Pop-up'):
         pu.click_launch_pop_up()
+    time.sleep(1)            
     with allure.step('Click checkbox select me or not'):
         pu.click_select_me_or_not()
+    time.sleep(1)
     with allure.step('Click send and assert'):
         pu.click_send()
+        time.sleep(1)
         pu.asert_selected_text()
 
 
