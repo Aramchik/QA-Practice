@@ -62,7 +62,7 @@ jobs:
               alerts)        pytest tests/test_alerts.py --alluredir=allure-results -v ;;
               "drag and drop") pytest tests/test_drag_n_drop.py --alluredir=allure-results -v ;;
               iframes)       pytest tests/test_iframes.py --alluredir=allure-results -v ;;
-              "pop-up")      pytest tests/test_popup.py --alluredir=allure-results -v ;;
+              "pop-up")      pytest tests/test_pop_up.py --alluredir=allure-results -v ;;
               *) echo "Неизвестная категория"; exit 1 ;;
             esac
           fi
